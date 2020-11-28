@@ -12,7 +12,7 @@ ARG ssh_pub_key
 WORKDIR /code
 #VOLUME  /code/GEM5/gem5/SharedData
 RUN apt update -y
-RUN apt install -y  openssh-server git build-essential python-dev scons swig m4 zlib1g-dev python-six graphviz
+RUN apt install -y  openssh-server git build-essential python-dev scons swig m4 zlib1g-dev libpng-dev python-six graphviz
 RUN apt install -y libprotobuf-dev python-protobuf protobuf-compiler libgoogle-perftools-dev python3-pip python3-virtualenv
 # Authorize SSH Host
 RUN mkdir -p /root/.ssh && \
