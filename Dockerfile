@@ -38,3 +38,23 @@ RUN git clone https://gem5.googlesource.com/public/gem5
 RUN rm -rf /root/.ssh/
 WORKDIR gem5
 RUN cat /proc/cpuinfo | grep processor | wc -l  | xargs -t -n1  scons build/X86/gem5.opt -j ;
+RUN apt install nano
+WORKDIR /code
+RUN wget http://parsec.cs.princeton.edu/download/2.1/parsec-2.1-core.tar.gz
+RUN tar -xf parsec-2.1-core.tar.gz
+WORKDIR /code/parsec-2.1/pkgs/apps/blackscholes/inputs/
+RUN tar -xf ./input_test.tar
+WORKDIR /code/parsec-2.1/pkgs/apps/blackscholes/src
+RUN sed -i '284s/.*/\/\/ if (argc != 4)/' blackscholes.c && \
+sed -i '285s/.*/\/\/ {/' blackscholes.c && \
+sed -i '286s/.*/\/\/ printf(\"Usage:\n\t%s <nthreads> <inputFile> <outputFile>\n\", argv[0]);/' blackscholes.c && \
+sed -i '287s/.*/\/\/ exit(1);/' blackscholes.c && \
+sed -i '288s/.*/\/\/ }/' blackscholes.c && \
+sed -i '289s/.*/nThreads = 1;/' blackscholes.c && \
+sed -i '290s/.*/char *inputFile = argv[1];/' blackscholes.c && \
+sed -i '291s/.*/char *outputFile = \"prueba\";/' blackscholes.c && \
+sed -i '292s/.*/ /' blackscholes.c && \
+sed -i '293s/.*/ /' blackscholes.c 
+RUN make
+WORKDIR /code/parsec-2.1/pkgs/apps/blackscholes
+
