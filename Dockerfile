@@ -1,5 +1,5 @@
 # docker build -t gem5 --build-arg ssh_prv_key="$(cat ~/.ssh/id_rsa)" --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)"  .
-# docker run -ti gem5
+# docker run --rm -ti gem5
 # En caso de remover los contenedores docker run -it --rm --volumes-from SharedData gem5 
 # docker run -ti --rm -v  /home/junavarro/projects/tec/arqui1/p2/sharedData:/home/SharedData gem5 
 FROM ubuntu:20.04
