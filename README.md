@@ -30,11 +30,18 @@ Estos comandos aplican para la imagen de gem5 en docker.
 
 Listar los tipos de branch predictor disponibles:
 ``` bash 
-/code/GEM5/gem5/build/X86/gem5.opt -d out_timing/ configs/example/se.py --list-bp-types
-/code/GEM5/gem5/build/X86/gem5.opt -d out_timing/ configs/example/se.py --list-indirect-bp-types
+/code/GEM5/gem5/build/X86/gem5.opt -d out_timing/ /code/GEM5/gem5/configs/example/se.py --list-bp-types
+/code/GEM5/gem5/build/X86/gem5.opt -d out_timing/ /code/GEM5/gem5/configs/example/se.py --list-indirect-bp-types
 ```
 Para establecer una branch predictor:
 
 ```bash 
 build/X86/gem5.opt -d out_timing/ configs/example/se.py -c tests/test-progs/hello/bin/x86/linux/hello --cpu-type=TimingSimpleCPU --caches --bp-type=TournamentBP
 ```
+
+Si se desea leer una línea de un archivo *stats.txt*, y que además dicha línea contenga parte del texto como consulta: i.e 
+*system.cpu.dcache.overall_misses::total*
+
+```bash
+ cat  ./m5out/stats.txt  |  awk -F "=" '/system.cpu.dcache.overall_misses::total/ {print $0}'
+``` 
