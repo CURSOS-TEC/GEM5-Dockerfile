@@ -6,4 +6,8 @@ export PY=$GEM5_DIR/configs/example/se.py
 export BENCHMARK=/code/parsec-2.1/pkgs/apps/blackscholes/src/blackscholes # Relativo al contenedor
 export ARGUMENT=/code/parsec-2.1/pkgs/apps/blackscholes/inputs/in_4.txt
 # -- Ejecución del ambiente --
-time $OPT -d m5out/ $PY -c $BENCHMARK -o $ARGUMENT
+time $OPT -d m5out/  $PY -c $BENCHMARK -o $ARGUMENT --cpu-type=TimingSimpleCPU --caches
+time $OPT -d m5out1/ $PY -c $BENCHMARK -o $ARGUMENT --cpu-type=DerivO3CPU --caches
+time $OPT -d m5out2/ $PY -c $BENCHMARK -o $ARGUMENT --cpu-type=AtomicSimpleCPU --caches --bp-type=TournamentBP
+time $OPT -d m5out3/ $PY -c $BENCHMARK -o $ARGUMENT --cpu-type=TimingSimpleCPU --caches
+time $OPT -d m5out4/ $PY -c $BENCHMARK -o $ARGUMENT --cpu-type=TimingSimpleCPU --caches
