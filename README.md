@@ -45,3 +45,11 @@ Si se desea leer una línea de un archivo *stats.txt*, y que además dicha líne
 ```bash
  cat  ./m5out/stats.txt  |  awk -F "=" '/system.cpu.dcache.overall_misses::total/ {print $0}'
 ``` 
+
+Si se desea leer una línea del archivo de resultado *stats.txt*
+``` bash 
+sed -n 235p ./m5out4/stats.txt
+``` 
+Con 235 el número de línea a leer.
+
+
