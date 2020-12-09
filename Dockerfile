@@ -56,5 +56,8 @@ sed -i '291s/.*/char *outputFile = \"prueba\";/' blackscholes.c && \
 sed -i '292s/.*/ /' blackscholes.c && \
 sed -i '293s/.*/ /' blackscholes.c 
 RUN make
-WORKDIR /code/parsec-2.1/pkgs/apps/bodytrack/inputs
+RUN apt install -y nano 
+WORKDIR /code/parsec-2.1/pkgs/apps/freqmine/inputs
 RUN tar -xf ./input_test.tar
+WORKDIR /code/parsec-2.1/pkgs/apps/freqmine/src
+RUN make
