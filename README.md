@@ -28,6 +28,11 @@ docker run -ti --rm -v  /home/junavarro/projects/tec/arqui1/p2/sharedData:/home/
 
 Estos comandos aplican para la imagen de gem5 en docker.
 
+Listado de los procesadores disponibles:
+```bash 
+/code/GEM5/gem5/build/X86/gem5.opt /code/GEM5/gem5/configs/example/se.py -c /code/GEM5/gem5/tests/test-progs/hello/bin/x86/linux/hello --list-cpu-types
+```
+
 Listar los tipos de branch predictor disponibles:
 ``` bash 
 /code/GEM5/gem5/build/X86/gem5.opt -d out_timing/ /code/GEM5/gem5/configs/example/se.py --list-bp-types
