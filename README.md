@@ -21,9 +21,9 @@ docker run -ti --rm -v  /home/junavarro/projects/tec/arqui1/p2/sharedData:/home/
 
 ## Referencia de Body track y GEM5
 
-[Parsec Tutorial](https://gem5art.readthedocs.io/en/latest/tutorials/parsec-tutorial.html)
-[Caracterización de Parsec](https://parsec.cs.princeton.edu/doc/parsec-report.pdf)
-[Respositorio de Parsec 1](https://github.com/cirosantilli/parsec-benchmark)
+1. [Parsec Tutorial](https://gem5art.readthedocs.io/en/latest/tutorials/parsec-tutorial.html)
+2. [Caracterización de Parsec](https://parsec.cs.princeton.edu/doc/parsec-report.pdf)
+3. [Respositorio de Parsec 1](https://github.com/cirosantilli/parsec-benchmark)
 ## Comandos útiles: 
 
 Estos comandos aplican para la imagen de gem5 en docker.
