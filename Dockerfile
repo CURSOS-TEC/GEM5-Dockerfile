@@ -60,4 +60,8 @@ RUN apt install -y nano
 WORKDIR /code/parsec-2.1/pkgs/apps/freqmine/inputs
 RUN tar -xf ./input_test.tar
 WORKDIR /code/parsec-2.1/pkgs/apps/freqmine/src
+RUN sed -i '127s/.*/\/\/exit(1);/' fpmax.cpp && \
+sed -i '129s/.*/	THRESHOLD = 2;/' fpmax.cpp && \
+sed -i '131s/.*/	Data* fdat=new Data(\".\/..\/inputs\/T10I4D100K_3.dat\");/' fpmax.cpp
 RUN make
+WORKDIR /home/SharedData
