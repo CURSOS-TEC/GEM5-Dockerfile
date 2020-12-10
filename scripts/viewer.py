@@ -51,13 +51,13 @@ def main(argv):
     with open(resultFile) as f:
         lines = f.readlines()
         x = lines[0].split(' ') # se obtiene los valores de la primera línea x
-        x = list(map(int,x)) 
+        x = list(map(float,x)) 
         y = lines[1].split(' ') # se obtiene los valores de la segunda línea y
-        y = list(map(int,y)) 
+        y = list(map(float,y)) 
         plt.plot(x, y, color="#6c3376", linewidth=3)  
         plt.xlabel(xAxisTitle)  
         plt.ylabel(yAxisTitle)
-        
+        plt.tight_layout()
         if(xScale != 'linear' ):
             plt.xscale(xScale, base=int(xScaleBase))
         else:   
