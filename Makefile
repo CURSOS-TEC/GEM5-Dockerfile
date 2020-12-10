@@ -4,3 +4,4 @@ all:
 
 install:
 		cp ./scripts/*.sh $(sharedDataDir)
+		cp ./scripts/*.py $(sharedDataDir)
