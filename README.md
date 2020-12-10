@@ -17,18 +17,6 @@ docker run -ti --rm -v  /home/junavarro/projects/tec/arqui1/p2/sharedData:/home/
 
 5. Las carpetas *m5out<index>* tendran los resultados de cada prueba ejecutada.
 
-
-
-## Referencia de Body track y GEM5
-
-1. [Parsec and GEM5 Tutorial](https://gem5art.readthedocs.io/en/latest/tutorials/parsec-tutorial.html)
-2. [Caracterización de Parsec](https://parsec.cs.princeton.edu/doc/parsec-report.pdf)
-3. [Respositorio de Parsec 1](https://github.com/cirosantilli/parsec-benchmark)
-4. [Tipos de CPU disponibles en GEM5](https://www.gem5.org/documentation/general_docs/cpu_models/SimpleCPU)
-5. [The PARSEC Benchmark Suite Tutorial](https://parsec.cs.princeton.edu/tutorial/)
-6. [The PARSEC Benchmark Suite Tutorial PARSEC 3.0 -](https://parsec.cs.princeton.edu/download/tutorial/3.0/parsec-tutorial.pdf)
-7. [A Characterization of the PARSEC Benchmark Suite for CMP Design](https://parsec.cs.princeton.edu/doc/cornell-report.pdf)
-
 ## Comandos útiles: 
 
 Estos comandos aplican para la imagen de gem5 en docker.
@@ -63,3 +51,18 @@ sed -n 235p ./m5out4/stats.txt
 Con 235 el número de línea a leer.
 
 
+## Referencia de Body track y GEM5
+1. [Parsec and GEM5 Tutorial](https://gem5art.readthedocs.io/en/latest/tutorials/parsec-tutorial.html)
+2. [Caracterización de Parsec](https://parsec.cs.princeton.edu/doc/parsec-report.pdf)
+3. [Respositorio de Parsec 1](https://github.com/cirosantilli/parsec-benchmark)
+4. [Tipos de CPU disponibles en GEM5](https://www.gem5.org/documentation/general_docs/cpu_models/SimpleCPU)
+5. [The PARSEC Benchmark Suite Tutorial](https://parsec.cs.princeton.edu/tutorial/)
+6. [The PARSEC Benchmark Suite Tutorial PARSEC 3.0 -](https://parsec.cs.princeton.edu/download/tutorial/3.0/parsec-tutorial.pdf)
+7. [A Characterization of the PARSEC Benchmark Suite for CMP Design](https://parsec.cs.princeton.edu/doc/cornell-report.pdf)
+8. [Ocultar la salida de un output](https://askubuntu.com/questions/474556/hiding-output-of-a-command)
+9. [Ciclo for en bash](https://www.cyberciti.biz/faq/bash-for-loop/)
+10. [Guardar los datos de una gráfica de Python](https://futurestud.io/tutorials/matplotlib-save-plots-as-file)
+11. [Exponenciación en Bash](https://stackoverflow.com/questions/13111967/raise-to-the-power-in-shell)
+12. [Exponenciación en Bash 2](https://unix.stackexchange.com/questions/299321/bash-multiplication-and-addition)
+13. [Agregar elementos en una array (bash)](https://linuxhint.com/bash_append_array/)
+14. [Escribir un array en un archivo](https://unix.stackexchange.com/questions/220692/store-array-to-file-and-load-array-from-file-in-bash)
