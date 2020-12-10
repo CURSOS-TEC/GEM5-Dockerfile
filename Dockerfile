@@ -64,6 +64,16 @@ RUN sed -i '127s/.*/\/\/exit(1);/' fpmax.cpp && \
 sed -i '129s/.*/	THRESHOLD = 2;/' fpmax.cpp && \
 sed -i '131s/.*/	Data* fdat=new Data(\".\/..\/inputs\/T10I4D100K_3.dat\");/' fpmax.cpp
 RUN make
-WORKDIR /home/SharedData
 WORKDIR /code/parsec-2.1/pkgs/apps/swaptions/src
+RUN sed -i '133s/.*//' HJM_Securities.cpp && \
+sed -i '134s/.*//' HJM_Securities.cpp && \
+sed -i '137s/.*//' HJM_Securities.cpp && \
+sed -i '138s/.*/\t\t\t NUM_TRIALS = 10000;/' HJM_Securities.cpp && \
+sed -i '139s/.*/\t\t\t nThreads = 1;/' HJM_Securities.cpp && \
+sed -i '140s/.*/\t\t\t nSwaptions = 10;/' HJM_Securities.cpp && \
+sed -i '141s/.*//' HJM_Securities.cpp && \
+sed -i '142s/.*//' HJM_Securities.cpp && \
+sed -i '143s/.*//' HJM_Securities.cpp && \
+sed -i '144s/.*//' HJM_Securities.cpp
 RUN make
+WORKDIR /home/SharedData
