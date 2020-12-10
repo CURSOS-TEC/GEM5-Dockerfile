@@ -76,4 +76,5 @@ sed -i '142s/.*//' HJM_Securities.cpp && \
 sed -i '143s/.*//' HJM_Securities.cpp && \
 sed -i '144s/.*//' HJM_Securities.cpp
 RUN make
+RUN pip3 install matplotlib
 WORKDIR /home/SharedData
