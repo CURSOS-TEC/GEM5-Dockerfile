@@ -1,14 +1,14 @@
 # -- Benchmark: blackscholes
 # -- Variable independiente: Asociatividad de cache L1 de datos e insturcciones 
-# -- Variable dependiente: system.cpu.dcache.overall_hits::total
+# -- Variable dependiente: system.cpu.dcache.tags.tagsinuse
 # -- Tipo de CPU: TimingSimpleCPU
 
 export META_BENCHMARK=blackscholes
 export META_XAXIS="Asociatividad de cache L1 de datos e insturcciones"
-export META_YAXIS="system.cpu.dcache.overall_hits::total"
+export META_YAXIS="system.cpu.dcache.tags.tagsinuse"
 export META_CPU_TYPE=TimingSimpleCPU
-export META_FOLDER_NAME=test2
-export META_WORK_DIR=/home/SharedData/test2/
+export META_FOLDER_NAME=test5
+export META_WORK_DIR=/home/SharedData/test5/
 
 
 
@@ -35,11 +35,11 @@ do
     #echo "Iteración ${testIndex}"
     (time $OPT -d "./${META_FOLDER_NAME}/m5out${testIndex}/"  $PY -c $BENCHMARK -o $ARGUMENT --cpu-type=$META_CPU_TYPE --caches --l2cache --l1d_size=256kB --l1i_size=256kB --l2_size=1MB "--l1d_assoc=$((2**testIndex))" "--l1i_assoc=$((2**testIndex))" --l2_assoc=1 --cacheline_size=64) &> /dev/null 2>&1
     xAxis[${#xAxis[@]}]="$((2**testIndex))"
-    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.dcache.overall_hits::total/ {print $0}' | awk -F " " '{print $2}')
+    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.dcache.tags.tagsinuse/ {print $0}' | awk -F " " '{print $2}')
     yAxis[${#yAxis[@]}]="${yValue}"
 done
 
 { echo "${xAxis[*]}"; echo "${yAxis[*]}"; } >./$META_FOLDER_NAME/plotResult
 echo "Generando gráfico de prueba ${META_FOLDER_NAME}"
 python3 viewer.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "log" --yscale "linear" --xbase 2 --ybase 10 --inputfolder "${META_WORK_DIR}"
-# cat ./test2/plotResult
+# cat ./test5/plotResult
