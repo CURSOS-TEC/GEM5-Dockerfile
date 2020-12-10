@@ -68,7 +68,7 @@ WORKDIR /code/parsec-2.1/pkgs/apps/swaptions/src
 RUN sed -i '133s/.*//' HJM_Securities.cpp && \
 sed -i '134s/.*//' HJM_Securities.cpp && \
 sed -i '137s/.*//' HJM_Securities.cpp && \
-sed -i '138s/.*/\t\t\t NUM_TRIALS = 10000;/' HJM_Securities.cpp && \
+sed -i '138s/.*/\t\t\t NUM_TRIALS = 100;/' HJM_Securities.cpp && \
 sed -i '139s/.*/\t\t\t nThreads = 1;/' HJM_Securities.cpp && \
 sed -i '140s/.*/\t\t\t nSwaptions = 10;/' HJM_Securities.cpp && \
 sed -i '141s/.*//' HJM_Securities.cpp && \
