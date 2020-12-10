@@ -50,6 +50,11 @@ sed -n 235p ./m5out4/stats.txt
 ``` 
 Con 235 el número de línea a leer.
 
+Si se desea graficar los resultado dada una carpeta de pruebas
+```python 
+python3 viewer.py --xtitle "xAxis"  --ytitle "yAxis" --xscale "log" --yscale "linear" --xbase 2 --ybase 10 --inputfolder "/home/SharedData/test1/"
+```
+
 
 ## Referencia de Body track y GEM5
 1. [Parsec and GEM5 Tutorial](https://gem5art.readthedocs.io/en/latest/tutorials/parsec-tutorial.html)
