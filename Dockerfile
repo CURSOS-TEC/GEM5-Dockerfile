@@ -65,3 +65,5 @@ sed -i '129s/.*/	THRESHOLD = 2;/' fpmax.cpp && \
 sed -i '131s/.*/	Data* fdat=new Data(\".\/..\/inputs\/T10I4D100K_3.dat\");/' fpmax.cpp
 RUN make
 WORKDIR /home/SharedData
+WORKDIR /code/parsec-2.1/pkgs/apps/swaptions/src
+RUN make
