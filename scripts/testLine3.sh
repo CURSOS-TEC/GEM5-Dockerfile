@@ -1,14 +1,14 @@
-# -- Benchmark: blackscholes
+# -- Benchmark: swaptions
 # -- Variable independiente: Ancho de línea 
 # -- Variable dependiente: system.cpu.dcache.overall_misses::total
 # -- Tipo de CPU: TimingSimpleCPU
 
-export META_BENCHMARK=blackscholes
+export META_BENCHMARK=swaptions
 export META_XAXIS="Ancho de línea"
 export META_YAXIS="system.cpu.dcache.overall_misses::total"
 export META_CPU_TYPE=TimingSimpleCPU
-export META_FOLDER_NAME=testLine1
-export META_WORK_DIR=/home/SharedData/testLine1
+export META_FOLDER_NAME=testLine3
+export META_WORK_DIR=/home/SharedData/testLine3
 
 
 
