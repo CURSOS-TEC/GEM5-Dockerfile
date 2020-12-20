@@ -16,7 +16,7 @@ export GEM5_DIR=/code/GEM5/gem5 # Relativo al contenedor
 export OPT=$GEM5_DIR/build/X86/gem5.opt
 export PY=$GEM5_DIR/configs/example/se.py
 export BENCHMARK=/code/parsec-2.1/pkgs/apps/$META_BENCHMARK/src/$META_BENCHMARK # Relativo al contenedor
-export ARGUMENT=/code/parsec-2.1/pkgs/apps/$META_BENCHMARK/inputs/in_4.txt
+export ARGUMENT=/code/parsec-2.1/pkgs/apps/$META_BENCHMARK/inputs/T10I4D100K_3.dat
 
 # creación de archivo de metadatos que describe los resultados obtenidos.
 RED='\033[0;31m'

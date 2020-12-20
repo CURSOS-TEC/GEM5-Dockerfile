@@ -1,11 +1,11 @@
 # -- Benchmark: blackscholes
 # -- Variable independiente: Branch predictor 
-# -- Variable dependiente: system.cpu.dcache.overall_misses::total
+# -- Variable dependiente: system.cpu.predictedBranches
 # -- Tipo de CPU: TimingSimpleCPU
 
 export META_BENCHMARK=blackscholes
 export META_XAXIS="Branch predictor"
-export META_YAXIS="system.cpu.dcache.overall_misses::total"
+export META_YAXIS="system.cpu.predictedBranches"
 export META_CPU_TYPE=TimingSimpleCPU
 export META_FOLDER_NAME=testBP1
 export META_WORK_DIR=/home/SharedData/testBP1
@@ -36,7 +36,7 @@ for testIndex in 0 1 2
 do
     echo "Iteración ${xAxis[testIndex]}"
     (time $OPT -d "./${META_FOLDER_NAME}/m5out${testIndex}/"  $PY -c $BENCHMARK -o $ARGUMENT --cpu-type=$META_CPU_TYPE  --bp-type=${xAxis[testIndex]}  --caches --l2cache --l1d_size=256kB --l1i_size=256kB --l2_size=1MB --l1d_assoc=2 --l1i_assoc=2 --l2_assoc=1 --cacheline_size=64) &> /dev/null 2>&1
-    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.dcache.overall_misses::total/ {print $0}' | awk -F " " '{print $2}')
+    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.predictedBranches/ {print $0}' | awk -F " " '{print $2}')
     yAxis[${#yAxis[@]}]="${yValue}"
 done
 
@@ -51,29 +51,29 @@ python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "
 
 yAxis=()
 export META_XAXIS="Branch predictor"
-export META_YAXIS="sim_ticks"
+export META_YAXIS="system.cpu.branchPred.condPredicted"
 echo -e "${YELLOW}Iteración gráfica${NC}: ${META_YAXIS}"
 for testIndex in 0 1 2
 do
-    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/sim_ticks/ {print $0}' | awk -F " " '{print $2}')
+    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.branchPred.condPredicted/ {print $0}' | awk -F " " '{print $2}')
     yAxis[${#yAxis[@]}]="${yValue}"
 done
 
 
 { echo "${xAxis[*]}"; echo "${yAxis[*]}"; } >./$META_FOLDER_NAME/plotResult
 echo "Generando gráfico de prueba ${META_FOLDER_NAME}"
-python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "log" --yscale "linear" --xbase 2 --ybase 10 --inputfolder "${META_WORK_DIR}" --graphName "plot2"
+python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "log" --yscale "linear" --xbase 2 --ybase 10 --inputfolder "${META_WORK_DIR}" --graphName "plot1"
 
 #---------------------------------------------------------------------------------------------------------------------------------------------#
 #Test2
 
 yAxis=()
 export META_XAXIS="Branch predictor"
-export META_YAXIS="system.cpu.dcache.overall_hits::total"
+export META_YAXIS="system.cpu.branchPred.condIncorrect"
 echo -e "${YELLOW}Iteración gráfica${NC}: ${META_YAXIS}"
 for testIndex in 0 1 2
 do
-    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.dcache.overall_hits::total/ {print $0}' | awk -F " " '{print $2}')
+    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.branchPred.condIncorrect/ {print $0}' | awk -F " " '{print $2}')
     yAxis[${#yAxis[@]}]="${yValue}"
 done
 
@@ -87,11 +87,11 @@ python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "
 
 yAxis=()
 export META_XAXIS="Branch predictor"
-export META_YAXIS="system.cpu.dcache.overall_miss_rate::total"
+export META_YAXIS="system.cpu.branchPred.indirectMisses"
 echo -e "${YELLOW}Iteración gráfica${NC}: ${META_YAXIS}"
 for testIndex in 0 1 2
 do
-    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.dcache.overall_miss_rate::total/ {print $0}' | awk -F " " '{print $2}')
+    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.branchPred.indirectMisses/ {print $0}' | awk -F " " '{print $2}')
     yAxis[${#yAxis[@]}]="${yValue}"
 done
 
@@ -105,11 +105,11 @@ python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "
 
 yAxis=()
 export META_XAXIS="Branch predictor"
-export META_YAXIS="system.cpu.dcache.replacements"
+export META_YAXIS="system.cpu.branchPred.indirectMispredicted"
 echo -e "${YELLOW}Iteración gráfica${NC}: ${META_YAXIS}"
 for testIndex in 0 1 2
 do
-    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.dcache.replacements/ {print $0}' | awk -F " " '{print $2}')
+    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.branchPred.indirectMispredicted/ {print $0}' | awk -F " " '{print $2}')
     yAxis[${#yAxis[@]}]="${yValue}"
 done
 
@@ -123,11 +123,11 @@ python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "
 
 yAxis=()
 export META_XAXIS="Branch predictor"
-export META_YAXIS="system.cpu.dcache.tags.tagsinuse"
+export META_YAXIS="system.cpu.branchPred.BTBLookups"
 echo -e "${YELLOW}Iteración gráfica${NC}: ${META_YAXIS}"
 for testIndex in 0 1 2
 do
-    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.dcache.tags.tagsinuse/ {print $0}' | awk -F " " '{print $2}')
+    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.branchPred.BTBLookups/ {print $0}' | awk -F " " '{print $2}')
     yAxis[${#yAxis[@]}]="${yValue}"
 done
 
@@ -137,19 +137,20 @@ echo "Generando gráfico de prueba ${META_FOLDER_NAME}"
 python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "log" --yscale "linear" --xbase 2 --ybase 10 --inputfolder "${META_WORK_DIR}" --graphName "plot5"
 
 #---------------------------------------------------------------------------------------------------------------------------------------------#
-#Test7
+#Test6
 
 yAxis=()
 export META_XAXIS="Branch predictor"
-export META_YAXIS="system.cpu.icache.overall_misses::total"
+export META_YAXIS="system.cpu.branchPred.BTBHits"
 echo -e "${YELLOW}Iteración gráfica${NC}: ${META_YAXIS}"
 for testIndex in 0 1 2
 do
-    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.icache.overall_misses::total/ {print $0}' | awk -F " " '{print $2}')
+    yValue=$(cat "./${META_FOLDER_NAME}/m5out${testIndex}/stats.txt" | awk -F "=" '/system.cpu.branchPred.BTBHits/ {print $0}' | awk -F " " '{print $2}')
     yAxis[${#yAxis[@]}]="${yValue}"
 done
 
 
 { echo "${xAxis[*]}"; echo "${yAxis[*]}"; } >./$META_FOLDER_NAME/plotResult
 echo "Generando gráfico de prueba ${META_FOLDER_NAME}"
-python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "log" --yscale "linear" --xbase 2 --ybase 10 --inputfolder "${META_WORK_DIR}" --graphName "plot7"
+python3 viewer3.py --xtitle "${META_XAXIS}"  --ytitle "${META_YAXIS}" --xscale "log" --yscale "linear" --xbase 2 --ybase 10 --inputfolder "${META_WORK_DIR}" --graphName "plot6"
+
